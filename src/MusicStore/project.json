@@ -36,7 +36,13 @@
         "Microsoft.Framework.Configuration.CommandLine": "1.0.0-*",
         "Microsoft.Framework.Configuration.EnvironmentVariables": "1.0.0-*",
         "Microsoft.Framework.Configuration.Json": "1.0.0-*",
-        "Microsoft.Framework.Logging.Console": "1.0.0-*"
+        "Microsoft.Framework.Logging.Console": "1.0.0-*",
+        "Glimpse.Host.Web.AspNet": "",
+        "Glimpse.Server.Web": "",
+        "Glimpse.Agent.Web": "",
+        "Glimpse.Client.Web": "",
+        "Glimpse.Agent.AspNet.Mvc": "",
+        "Glimpse.Agent.Browser": ""
     },
     "commands": {
         "gen": "Microsoft.Framework.CodeGeneration",

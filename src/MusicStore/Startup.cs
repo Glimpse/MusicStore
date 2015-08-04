@@ -13,6 +13,7 @@ using Microsoft.Framework.Logging;
 using Microsoft.Dnx.Runtime;
 using MusicStore.Components;
 using MusicStore.Models;
+using Glimpse;
 
 namespace MusicStore
 {
@@ -36,6 +37,12 @@ namespace MusicStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddGlimpse()
+                .RunningAgentWeb()
+                .RunningServerWeb()
+                .WithLocalAgent();
+
             services.Configure<AppSettings>(Configuration.GetConfigurationSection("AppSettings"));
 
             var useInMemoryStore = _platform.IsRunningOnMono || _platform.IsRunningOnNanoServer;
@@ -175,6 +182,13 @@ namespace MusicStore
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseGlimpse();
+            app.UseGlimpseUI();
+
+            // TODO: Nedd to find a better way of registering this. Problem is that this
+            //       registration is aspnet5 specific.
+            app.UseSignalR("/Glimpse/Data/Stream");
+
             // Configure Session.
             app.UseSession();
 
